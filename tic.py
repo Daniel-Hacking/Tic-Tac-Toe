@@ -1,23 +1,55 @@
-def board():
-    print (' '+x[1] and +y[1]' | '+x[2] and +y[1] )' | '+x[3] and +y[1])
-    print ('---|---|---')
-    print (' '+x[1] and +y[2]' | '+x[2] and +y[2] )' | '+x[3] and +y[2])
-    print ('---|---|---')
-    print (' '+x[1] and +y[3]' | '+x[2] and +y[3] )' | '+x[3] and +y[3])
-
-def end():
+a = ' '
+b = ' '
+c = ' '
+d = ' '
+e = ' '
+f = ' '
+g = ' '
+h = ' '
+i = ' '
     
-    if 
+def board(x, y):
+    print (' %s | %s | &s ') %(a, b, c)
+    print ('---|---|---')
+    print (' %s | %s | %s ') %(d, e, f)
+    print ('---|---|---')
+    print (' %s | %s | %s ') %(g, h, i)
 
-def input(board):
-    x = none
-    y = none
-    while end == False:
-        print board(x, y)
-        x = input("X = ")
-        y = input("Y = ")
+
+def move(board):
+    x = 0
+    y = 0
+    spaces_left = 9
+    while spaces_left > 0:
+        print (board(x, y))
+        x = input(int("X = "))
+        y = input(int("Y = "))
         if space_taken != False:
             print ('Try again my man')
         else:
+            if x<0 and x>4 and y<0 and y>4:
+                if x == 1:
+                    if y == 1:
+                        a
+                    elif y == 2:
+                        b
+                    else:
+                        c
+                elif x == 2:
+                    if y == 1:
+                        d
+                    elif y == 2:
+                        e
+                    else:
+                        f
+                else:
+                    if y == 1:
+                        g
+                    elif y == 2:
+                        h
+                    else:
+                        i
+            else:
+                False
             spaces_left -= 1
-        
+
