@@ -1,19 +1,30 @@
-a = ' '
-b = ' '
-c = ' '
-d = ' '
-e = ' '
-f = ' '
-g = ' '
-h = ' '
-i = ' '
-    
+def 
+    a = ' '
+    b = ' '
+    c = ' '
+    d = ' '
+    e = ' '
+    f = ' '
+    g = ' '
+    h = ' '
+    i = ' '
+
 def board(x, y):
-    print (' %s | %s | &s ') %(a, b, c)
+    print (' {0} | {1} | {2} '.format(a, b, c))
     print ('---|---|---')
-    print (' %s | %s | %s ') %(d, e, f)
+    print (' {0} | {1} | {2} '.format(d, e, f))
     print ('---|---|---')
-    print (' %s | %s | %s ') %(g, h, i)
+    print (' {0} | {1} | {2} '.format(g, h, i))
+
+def x_or_o():
+    turn = 1
+    if turn % 2 == 0:
+        return "O"
+    else:
+        return "X"
+
+def space_taken():
+    if 
 
 
 def move(board):
@@ -22,34 +33,35 @@ def move(board):
     spaces_left = 9
     while spaces_left > 0:
         print (board(x, y))
-        x = input(int("X = "))
-        y = input(int("Y = "))
+        x = input("X = ")
+        y = input("Y = ")
         if space_taken != False:
             print ('Try again my man')
         else:
             if x<0 and x>4 and y<0 and y>4:
                 if x == 1:
                     if y == 1:
-                        a
+                        a = x_or_o
                     elif y == 2:
-                        b
+                        b = x_or_o
                     else:
-                        c
+                        c = x_or_o
                 elif x == 2:
                     if y == 1:
-                        d
+                        d = x_or_o
                     elif y == 2:
-                        e
+                        e = x_or_o
                     else:
-                        f
+                        f = x_or_o
                 else:
                     if y == 1:
-                        g
+                        g = x_or_o
                     elif y == 2:
-                        h
+                        h = x_or_o
                     else:
-                        i
+                        i = x_or_o
             else:
                 False
+            turn -= 1
             spaces_left -= 1
 
