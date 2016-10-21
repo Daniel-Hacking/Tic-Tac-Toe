@@ -1,22 +1,26 @@
-#values for spaces
-a = ' '
-b = ' '
-c = ' '
-d = ' '
-e = ' '
-f = ' '
-g = ' '
-h = ' '
-i = ' '
+print ('Tic Tac Toe')
+
 turn = 1
 
+let = {
+    'a' : ' ',
+    'b' : ' ',
+    'c' : ' ',
+    'd' : ' ',
+    'e' : ' ',
+    'f' : ' ',
+    'g' : ' ',
+    'h' : ' ',
+    'i' : ' '
+}
+
 #prints board
-def board(x, y):
-    print (' {0} | {1} | {2} '.format(a, b, c))
+def board(let):
+    print (' {0} | {1} | {2} '.format(let['a'], let['b'], let['c']))
     print ('---|---|---')
-    print (' {0} | {1} | {2} '.format(d, e, f))
+    print (' {0} | {1} | {2} '.format(let['d'], let['e'], let['f']))
     print ('---|---|---')
-    print (' {0} | {1} | {2} '.format(g, h, i))
+    print (' {0} | {1} | {2} '.format(let['g'], let['h'], let['i']))
 
 #what determines if an X or an O is used
 def x_or_o(turn):
@@ -25,41 +29,85 @@ def x_or_o(turn):
     else:
         return "X"
 
+def taken(x):
+    if let[x] != ' ':
+        return True
+    else:
+        return False
+
 #handles player input
-def move(board, turn):
+def move(board,turn, x_or_o, taken):
     x = 0
     y = 0
     spaces_left = 9
     while spaces_left > 0:
-        print (turn)
-        print (board(x, y))
+        print (turn, x_or_o(turn), '\'s turn')
+        print (board(let))
         x = input("X = ")
         y = input("Y = ")
         if int(x)>0 and int(x)<4 and int(y)>0 and int(y)<4:
-            if x == 1:
-                if y == 1:
-                    a = x_or_o(turn)
-                elif y == 2:
-                    b = x_or_o(turn)
+            if int(x) == 1:
+                if int(y) == 1:
+                    if taken('a') == False:
+                        let['a'] = x_or_o(turn)
+                    else:
+                        print ('Space is taken Yo')
+                        continue
+                elif int(y) == 2:
+                    if taken('b') == False:
+                        let['b'] = x_or_o(turn)
+                    else:
+                        print ('Space is taken Yo')
+                        continue
                 else:
-                    c = x_or_o(turn)
-            elif x == 2:
-                if y == 1:
-                    d = x_or_o(turn)
-                elif y == 2:
-                    e = x_or_o(turn)
+                    if taken('c') == False:
+                        let['c'] = x_or_o(turn)
+                    else:
+                        print ('Space is taken Yo')
+                        continue
+            elif int(x) == 2:
+                if int(y) == 1:
+                    if taken('d') == False:
+                        let['d'] = x_or_o(turn)
+                    else:
+                        print ('Space is taken Yo')
+                        continue
+                elif int(y) == 2:
+                    if taken('e') == False:
+                        let['e'] = x_or_o(turn)
+                    else:
+                        print ('Space is taken Yo')
+                        continue
                 else:
-                    f = x_or_o(turn)
+                    if taken('f') == False:
+                        let['f'] = x_or_o(turn)
+                    else:
+                        print ('Space is taken Yo')
+                        continue
             else:
-                if y == 1:
-                    g = x_or_o(turn)
-                elif y == 2:
-                    h = x_or_o(turn)
+                if int(y) == 1:
+                    if taken('g') == False:
+                        let['g'] = x_or_o(turn)
+                    else:
+                        print ('Space is taken Yo')
+                        continue
+                elif int(y) == 2:
+                    if taken('h') == False:
+                        let['h'] = x_or_o(turn)
+                    else:
+                        print ('Space is taken Yo')
+                        continue
                 else:
-                    i = x_or_o(turn)
+                    if taken('i') == False:
+                        let['i'] = x_or_o(turn)
+                    else:
+                        print ('Space is taken Yo')
+                        continue
             turn += 1
             spaces_left -= 1
         else:
             print ('Not a real space my dude')
+        print ('=================================')
+        print ('=================================')
 
-move(board, turn)
+move(board, turn, x_or_o, taken)
