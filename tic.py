@@ -106,6 +106,12 @@ def move(board,turn, x_or_o, taken, winner):
         print (board(let))
         x = input("X = ")
         y = input("Y = ")
+        try:
+            x = int(x)
+            y = int(y)
+        except ValueError:
+        	print ('Not a Number')
+        	continue
         if True: #place holder for fix for anything but a number glitch
             if int(x)>0 and int(x)<4 and int(y)>0 and int(y)<4:
                 if int(x) == 1:
