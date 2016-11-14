@@ -96,23 +96,33 @@ def winner(let):
     else:
         return False
 
+def replay(winner):
+    ans = input("Do you want to play again y/n")
+    
+    if ans.lower == "n":
+        return False
+    elif ans.lower == "y":
+        return True
+    else:
+        continune
+
 #handles player input
 def move(board,turn, x_or_o, taken, winner):
     x = 0
     y = 0
     spaces_left = 9
-    while spaces_left > 0 and winner(let) == False:
-        print (turn, x_or_o(turn), '\'s turn')
-        print (board(let))
-        x = input("X = ")
-        y = input("Y = ")
-        try:
-            x = int(x)
-            y = int(y)
-        except ValueError:
-        	print ('Not a Number')
-        	continue
-        if True: #place holder for fix for anything but a number glitch
+    while spaces_left > 0:
+        if winner(let) == False:
+            print (turn, x_or_o(turn), '\'s turn')
+            print (board(let))
+            x = input("X = ")
+            y = input("Y = ")
+            try:
+                x = int(x)
+                y = int(y)
+            except ValueError:
+        	    print ('Not a Number')
+        	    continue
             if int(x)>0 and int(x)<4 and int(y)>0 and int(y)<4:
                 if int(x) == 1:
                     if int(y) == 1:
@@ -175,12 +185,12 @@ def move(board,turn, x_or_o, taken, winner):
                 spaces_left -= 1
             else:
                 print ('Not a real space my dude')
-        else: #Place holder for non-number glitch
-            print ('Rip')
+        else:
+            print (winner(let))
+            break
         print ('=================================')
         print ('=================================')
-    print (board(let))
-
+        print (board(let))
 move(board, turn, x_or_o, taken, winner)
 
 
