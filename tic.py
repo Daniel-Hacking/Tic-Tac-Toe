@@ -97,14 +97,17 @@ def winner(let):
         return False
 
 def replay(winner):
-    ans = input("Do you want to play again y/n")
-    
-    if ans.lower == "n":
-        return False
-    elif ans.lower == "y":
-        return True
-    else:
-        continune
+    ans = input("Do you want to play again y/n : ")
+    x = 1
+    while x > 0:
+        if ans.lower == "n":
+            x -= 1
+            return False
+        elif ans.lower == "y":
+            x -= 1
+            return True
+        else:
+            continue
 
 #handles player input
 def move(board,turn, x_or_o, taken, winner):
@@ -187,10 +190,12 @@ def move(board,turn, x_or_o, taken, winner):
                 print ('Not a real space my dude')
         else:
             print (winner(let))
-            break
+            print (replay(winner))
+            if ans == "y"
         print ('=================================')
         print ('=================================')
-        print (board(let))
+    print (board(let))
+    print (winner(let))
 move(board, turn, x_or_o, taken, winner)
 
 
