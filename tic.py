@@ -100,10 +100,10 @@ def replay(winner):
     ans = input("Do you want to play again y/n : ")
     x = 1
     while x > 0:
-        if ans.lower == "n":
+        if str(ans).lower == "n":
             x -= 1
             return False
-        elif ans.lower == "y":
+        elif str(ans).lower == "y":
             x -= 1
             return True
         else:
@@ -191,7 +191,13 @@ def move(board,turn, x_or_o, taken, winner):
         else:
             print (winner(let))
             print (replay(winner))
-            if ans == "y"
+            if replay(winner) == False:
+                break
+            else:
+                spaces_left = 9
+                turn = 1
+                for i in let:
+                    let[i] = " "
         print ('=================================')
         print ('=================================')
     print (board(let))
