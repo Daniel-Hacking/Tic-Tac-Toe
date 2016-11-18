@@ -98,12 +98,13 @@ def winner(let):
 
 def replay():
     ans = input("Do you want to play again y/n : ")
+    a = str(ans)
     x = 1
     #while x > 0:
-    if str(ans) == "n":
+    if a.lower() == "n":
       x -= 1
       return False
-    elif str(ans) == "y":
+    elif a.lower() == "y":
         x -= 1
         return True
     else:
