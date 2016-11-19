@@ -2,6 +2,10 @@ print ('Tic Tac Toe')
 
 turn = 1
 
+win = ""
+X_wins = 0
+Y_wins = 0
+
 let = {
     'a' : ' ',
     'b' : ' ',
@@ -41,57 +45,73 @@ def winner(let):
     #horizontal wins
     if let['a'] == 'X' and let['b'] == 'X' and let['c'] == 'X':
         print ('Player X wins!')
+        win = "X"
         return True
     elif let['d'] == 'X' and let['e'] == 'X' and let['f'] == 'X':
         print ('Player X wins!')
+        win = "X"
         return True
     elif let['g'] == 'X' and let['h'] == 'X' and let['i'] == 'X':
         print ('Player X wins!')
+        win = "X"
         return True
     #Vertical Wins
     elif let['a'] == 'X' and let['d'] == 'X' and let['g'] == 'X':
         print ('Player X wins!')
+        win = "X"
         return True
     elif let['b'] == 'X' and let['e'] == 'X' and let['h'] == 'X':
         print ('Player X wins!')
+        win = "X"
         return True
     elif let['c'] == 'X' and let['f'] == 'X' and let['i'] == 'X':
         print ('Player X wins!')
+        win = "X"
         return True
     #Diagonal Wins
     elif let['a'] == 'X' and let['e'] == 'X' and let['i'] == 'X':
         print ('Player X wins!')
+        win = "X"
         return True
     elif let['g'] == 'X' and let['e'] == 'X' and let['c'] == 'X':
         print ('Player X wins!')
+        win = "X"
         return True
 #Y Wins
     #horizontal Wins
     if let['a'] == 'O' and let['b'] == 'O' and let['c'] == 'O':
         print ('Player O wins!')
+        win = "O"
         return True
     elif let['d'] == 'O' and let['e'] == 'O' and let['f'] == 'O':
         print ('Player X wins!')
+        win = "O"
         return True
     elif let['g'] == 'O' and let['h'] == 'O' and let['i'] == 'O':
         print ('Player O wins!')
+        win = "O"
         return True
     #Vertical Wins
     elif let['a'] == 'O' and let['d'] == 'O' and let['g'] == 'O':
         print ('Player O wins!')
+        win = "O"
         return True
     elif let['b'] == 'O' and let['e'] == 'O' and let['h'] == 'O':
         print ('Player O wins!')
+        win = "O"
         return True
     elif let['c'] == 'O' and let['f'] == 'O' and let['i'] == 'O':
         print ('Player O wins!')
+        win = "O"
         return True
     #Diagonal Wins
     elif let['a'] == 'O' and let['e'] == 'O' and let['i'] == 'O':
         print ('Player O wins!')
+        win = "O"
         return True
     elif let['g'] == 'O' and let['e'] == 'O' and let['c'] == 'O':
         print ('Player O wins!')
+        win = "O"
         return True
     else:
         return False
@@ -109,6 +129,14 @@ def replay():
         return True
     else:
       pass
+
+def win_conter(winner):
+    if win == "X":
+        X_wins += 1
+    elif win == "O":
+        O_wins += 1
+    else:
+        pass
 
 #handles player input
 def move(board,turn, x_or_o, taken, winner):
@@ -189,14 +217,14 @@ def move(board,turn, x_or_o, taken, winner):
                 spaces_left -= 1
             else:
                 print ('Not a real space my dude')
-        else:
+        elif winner(let) == True:
             print (winner(let))
             print (board(let))
             answered = False
             while answered == False:
               re = replay()
               if re == False:
-                quit()
+                return
               elif re == True:
                 answered = True
                 spaces_left = 9
@@ -209,8 +237,32 @@ def move(board,turn, x_or_o, taken, winner):
                 print (" ")
                 print ("y = yes n = no")
                 print ("Use y or n")
+        else:
+            print ("There a Problem, you should not be reading this, if so... dang")
         print ('=================================')
         print ('=================================')
+    else:
+        print ("You Tied")
+        print (board(let))
+        answered = False
+        while answered == False:
+            re = replay()
+            if re == False:
+                return
+            elif re == True:
+                answered = True
+            spaces_left = 9
+            turn = 1
+            for i in let:
+                let[i] = " "
+            else:
+                print (" ")
+                print (" ")
+                print (" ")
+                print ("y = yes n = no")
+                print ("Use y or n")
+    print ('=================================')
+    print ('=================================')
     print (winner(let))
 move(board, turn, x_or_o, taken, winner)
 
