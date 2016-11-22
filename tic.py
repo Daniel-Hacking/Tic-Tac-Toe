@@ -4,7 +4,7 @@ turn = 1
 
 win = ""
 X_wins = 0
-Y_wins = 0
+O_wins = 0
 
 let = {
     'a' : ' ',
@@ -130,7 +130,7 @@ def replay():
     else:
       pass
 
-def win_conter(winner):
+def win_counter(winner):
     if win == "X":
         X_wins += 1
     elif win == "O":
@@ -218,7 +218,8 @@ def move(board,turn, x_or_o, taken, winner):
             else:
                 print ('Not a real space my dude')
         elif winner(let) == True:
-            print (winner(let))
+            win_counter(winner)
+            print ("X won "X_wins" Times", "O won "O_wins" Times")
             print (board(let))
             answered = False
             while answered == False:
