@@ -130,16 +130,16 @@ def replay():
     else:
       pass
 
-def win_counter(winner):
+def win_counter(winner, X_wins, O_wins):
     if win == "X":
         X_wins += 1
     elif win == "O":
         O_wins += 1
     else:
-        pass
+        print ("Somthing went wrong my guy")
 
 #handles player input
-def move(board,turn, x_or_o, taken, winner):
+def move(board,turn, x_or_o, taken, winner, X_wins, O_wins):
     x = 0
     y = 0
     spaces_left = 9
@@ -217,9 +217,9 @@ def move(board,turn, x_or_o, taken, winner):
                 spaces_left -= 1
             else:
                 print ('Not a real space my dude')
-        elif winner(let) == True:
-            win_counter(winner)
-            print ("X won "X_wins" Times", "O won "O_wins" Times")
+        elif (winner(let)) == True:
+            win_counter(winner, X_wins, O_wins)
+            print ("X won ", X_wins, " Times", "O won ", O_wins, " Times")
             print (board(let))
             answered = False
             while answered == False:
@@ -265,7 +265,7 @@ def move(board,turn, x_or_o, taken, winner):
     print ('=================================')
     print ('=================================')
     print (winner(let))
-move(board, turn, x_or_o, taken, winner)
+move(board, turn, x_or_o, taken, winner, X_wins, O_wins)
 
 
 
