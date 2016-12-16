@@ -232,7 +232,7 @@ def move(board, turn, x_or_o, taken, winner, X_wins, O_wins):
               elif re == True:
                 answered = True
                 spaces_left = 9
-                turn = 2
+                turn = 1
                 for i in let:
                   let[i] = " "
                 win_counter(win, X_wins, O_wins)
