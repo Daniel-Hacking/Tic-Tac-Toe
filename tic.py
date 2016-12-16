@@ -2,7 +2,8 @@ print ('Tic Tac Toe')
 
 turn = 1
 
-win = ""
+win = 0
+# 1 = X, 2 = O
 X_wins = 0
 O_wins = 0
 
@@ -40,78 +41,78 @@ def taken(x):
     else:
         return False
 
-def winner(let):
+def winner(let, win):
 #X Wins
     #horizontal wins
     if let['a'] == 'X' and let['b'] == 'X' and let['c'] == 'X':
         print ('Player X wins!')
-        win = "X"
+        win = 1
         return True
     elif let['d'] == 'X' and let['e'] == 'X' and let['f'] == 'X':
         print ('Player X wins!')
-        win = "X"
+        win = 1
         return True
     elif let['g'] == 'X' and let['h'] == 'X' and let['i'] == 'X':
         print ('Player X wins!')
-        win = "X"
+        win = 1
         return True
     #Vertical Wins
     elif let['a'] == 'X' and let['d'] == 'X' and let['g'] == 'X':
         print ('Player X wins!')
-        win = "X"
+        win = 1
         return True
     elif let['b'] == 'X' and let['e'] == 'X' and let['h'] == 'X':
         print ('Player X wins!')
-        win = "X"
+        win = 1
         return True
     elif let['c'] == 'X' and let['f'] == 'X' and let['i'] == 'X':
         print ('Player X wins!')
-        win = "X"
+        win = 1
         return True
     #Diagonal Wins
     elif let['a'] == 'X' and let['e'] == 'X' and let['i'] == 'X':
         print ('Player X wins!')
-        win = "X"
+        win = 1
         return True
     elif let['g'] == 'X' and let['e'] == 'X' and let['c'] == 'X':
         print ('Player X wins!')
-        win = "X"
+        win = 1
         return True
 #Y Wins
     #horizontal Wins
     if let['a'] == 'O' and let['b'] == 'O' and let['c'] == 'O':
         print ('Player O wins!')
-        win = "O"
+        win = 2
         return True
     elif let['d'] == 'O' and let['e'] == 'O' and let['f'] == 'O':
         print ('Player X wins!')
-        win = "O"
+        win = 2
         return True
     elif let['g'] == 'O' and let['h'] == 'O' and let['i'] == 'O':
         print ('Player O wins!')
-        win = "O"
+        win = 2
         return True
     #Vertical Wins
     elif let['a'] == 'O' and let['d'] == 'O' and let['g'] == 'O':
         print ('Player O wins!')
-        win = "O"
+        win = 2
         return True
     elif let['b'] == 'O' and let['e'] == 'O' and let['h'] == 'O':
         print ('Player O wins!')
-        win = "O"
+        win = 2
         return True
     elif let['c'] == 'O' and let['f'] == 'O' and let['i'] == 'O':
         print ('Player O wins!')
-        win = "O"
+        win = 2
         return True
     #Diagonal Wins
     elif let['a'] == 'O' and let['e'] == 'O' and let['i'] == 'O':
         print ('Player O wins!')
-        win = "O"
+        win = 2
         return True
     elif let['g'] == 'O' and let['e'] == 'O' and let['c'] == 'O':
         print ('Player O wins!')
-        win = "O"
+        win = 2
         return True
     else:
         return False
@@ -131,21 +132,21 @@ def replay():
       pass
 
 def win_counter(win, X_wins, O_wins):
-    if win == "X":
+    if win == 1:
         X_wins += 1
-    elif win == "O":
+    elif win == 2:
         O_wins += 1
     else:
         print ("Somthing went wrong my guy")
 
 
 #handles player input
-def move(board,turn, x_or_o, taken, winner, X_wins, O_wins):
+def move(board, turn, x_or_o, taken, winner, X_wins, O_wins):
     x = 0
     y = 0
     spaces_left = 9
     while spaces_left > 0:
-        if winner(let) == False:
+        if winner(let, win) == False:
             print (turn, x_or_o(turn), '\'s turn')
             print (board(let))
             x = input("X = ")
@@ -218,7 +219,8 @@ def move(board,turn, x_or_o, taken, winner, X_wins, O_wins):
                 spaces_left -= 1
             else:
                 print ('Not a real space my dude')
-        elif (winner(let)) == True:
+        else:
+            winner(let, win)
             win_counter(win, X_wins, O_wins)
             print ("X won ", X_wins, " Times", "O won ", O_wins, " Times")
             print (board(let))
@@ -230,17 +232,16 @@ def move(board,turn, x_or_o, taken, winner, X_wins, O_wins):
               elif re == True:
                 answered = True
                 spaces_left = 9
-                turn = 1
+                turn = 2
                 for i in let:
                   let[i] = " "
+                win_counter(win, X_wins, O_wins)
               else:
                 print (" ")
                 print (" ")
                 print (" ")
                 print ("y = yes n = no")
                 print ("Use y or n")
-        else:
-            print ("There a Problem, you should not be reading this, if so... dang")
         print ('=================================')
         print ('=================================')
     else:
@@ -265,7 +266,6 @@ def move(board,turn, x_or_o, taken, winner, X_wins, O_wins):
                 print ("Use y or n")
     print ('=================================')
     print ('=================================')
-    print (winner(let))
 move(board, turn, x_or_o, taken, winner, X_wins, O_wins)
 
 
